@@ -1,0 +1,30 @@
+{
+  "canisters": {
+    "hello_backend": {
+      "build": "python -m kybra hello_backend src/hello_backend/src/main.py src/hello_backend/hello_backend.did",
+      "candid": "src/hello_backend/hello_backend.did",
+      "gzip": true,
+      "post_install": ".kybra/hello_backend/post_install.sh",
+      "type": "custom",
+      "wasm": ".kybra/hello_backend/hello_backend.wasm"
+    },
+    "hello_frontend": {
+      "dependencies": [
+        "hello_backend"
+      ],
+      "source": [
+        "src/hello_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "hello_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
